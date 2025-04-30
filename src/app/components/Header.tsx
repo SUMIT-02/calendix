@@ -16,7 +16,7 @@ export default function Header() {
         </nav>
       </div>
       <nav className="flex items-center gap-4">
-        <Link href={"/singIn"}>sign in</Link>
+        <Link href={"/singIn"}>Sign in</Link>
         <Link
           href={"/about"}
           className="bg-blue-600 text-white py-2 px-4 rounded-full"
