@@ -1,8 +1,8 @@
 // callback route Nylas redirects to
 import { nylas, nylasConfig } from "@/libs/nylas";
 import { session } from "@/libs/session";
-import { ProfileModel } from "@/models/Profile";
-import mongoose from "mongoose";
+// import { ProfileModel } from "@/models/Profile";
+// import mongoose from "mongoose";
 import { redirect } from "next/navigation";
 import { NextRequest } from "next/server";
 
@@ -27,17 +27,18 @@ export async function GET(req: NextRequest) {
   const response = await nylas.auth.exchangeCodeForToken(codeExchangePayload);
   const { grantId, email } = response;
 
-  await mongoose.connect(process.env.MONGODB_URI as string);
+  // await mongoose.connect(process.env.MONGODB_URI as string);
 
-  const profileDoc = await ProfileModel.findOne({ email });
-  if (profileDoc) {
-    profileDoc.grantId = grantId;
-    await profileDoc.save();
-  } else {
-    await ProfileModel.create({ email, grantId });
-  }
+  // const profileDoc = await ProfileModel.findOne({ email });
+  // if (profileDoc) {
+  //   profileDoc.grantId = grantId;
+  //   await profileDoc.save();
+  // } else {
+  //   await ProfileModel.create({ email, grantId });
+  // }
 
   await session().set("email", email);
+  await session().set("grandId", grantId);
 
   redirect("/");
 }
