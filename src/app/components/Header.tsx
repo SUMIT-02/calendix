@@ -18,25 +18,27 @@ export default async function Header() {
           <Link href={"/pricing"}>Pricing</Link>
         </nav>
       </div>
-      email&&(
-      <nav className="flex items-center gap-4">
-        <Link
-          href={"/about"}
-          className="bg-blue-600 text-white py-2 px-4 rounded-full"
-        >
-          Dashboard
-        </Link>
-      </nav>
-      )
-      <nav className="flex items-center gap-4">
-        <Link href={"/singIn"}>Sign in</Link>
-        <Link
-          href={"/about"}
-          className="bg-blue-600 text-white py-2 px-4 rounded-full"
-        >
-          Get started
-        </Link>
-      </nav>
+      {email && (
+        <nav className="flex items-center gap-4">
+          <Link
+            href={"/about"}
+            className="bg-blue-600 text-white py-2 px-4 rounded-full"
+          >
+            Dashboard
+          </Link>
+        </nav>
+      )}{" "}
+      {!email && (
+        <nav className="flex items-center gap-4">
+          <Link href={"/singIn"}>Sign in</Link>
+          <Link
+            href={"/about"}
+            className="bg-blue-600 text-white py-2 px-4 rounded-full"
+          >
+            Get started
+          </Link>
+        </nav>
+      )}
     </header>
   );
 }
